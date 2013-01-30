@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -31,42 +30,11 @@
  * All rights reserved.
  */
 
-namespace FancyGuy\Component\LazyConfiguration\Loader;
-
-use FancyGuy\Component\LazyConfiguration\Repository\RepositoryInterface;
-use FancyGuy\Component\LazyConfiguration\Exception\MalformedNamespaceException;
+namespace FancyGuy\Component\LazyConfiguration\Exception;
 
 /**
- * Description of FilesystemAutoloader
+ * Standard exception extension.
  *
  * @author Steve Buzonas <steve@fancyguy.com>
  */
-class FilesystemAutoloader implements ConfigurationLoaderInterface {
-    
-    const NAMESPACE_SEPARATOR = '::';
-    const KEY_SEPARATOR = ':';
-    
-    /**
-     * @var RepositoryInterface
-     */
-    protected $repository;
-    
-    public function __construct(RepositoryInterface $repository) {
-        $this->repository = $repository;
-    }
-    
-    public function getConfigurationValue($key) {
-        $matches = array();
-        preg_match('/(.+?\w):([^:].+)/u', $key, $matches);
-        
-        if (count($matches) !== 3) {
-            throw new MalformedNamespaceException();
-        }
-        
-        $namespace = $matches[1];
-        $parameter = $matches[2];
-        $path = implode(DIRECTORY_SEPARATOR, explode(self::NAMESPACE_SEPARATOR, $namespace));
-        return $this->repository->getCollection($path)->getValueForKey($parameter);
-    }
-    
-}
+class MalformedNamespaceException extends \Exception{ }
