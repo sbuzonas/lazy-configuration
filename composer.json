@@ -1,6 +1,7 @@
 {
     "name": "fancyguy/lazy-configuration",
     "description": "Lazy loading suite for configuration files.",
+    "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "Steve Buzonas",
@@ -9,5 +10,5 @@
     ],
     "autoload": {
         "psr-0": { "FancyGuy\\Component\\LazyConfiguration\\": "src/" }
-    },
+    }
 }
