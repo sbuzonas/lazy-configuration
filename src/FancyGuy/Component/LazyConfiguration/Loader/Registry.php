@@ -42,8 +42,16 @@ class Registry {
     
     protected static $self;
     
+    /**
+     * @var ConfigurationLoaderInterface
+     */
+    protected $loader;
+    
     private function __construct() {}
     
+    /**
+     * @return Registry
+     */
     public static function getInstance() {
         if (empty(static::$self)) {
             static::$self = new static();
@@ -52,8 +60,19 @@ class Registry {
         return static::$self;
     }
     
-    public function addLoader($loader, $namespace = '__main__') {
-        
+    /**
+     * @param ConfigurationLoaderInterface $loader
+     */
+    public function setLoader(ConfigurationLoaderInterface $loader) {
+        $this->loader = $loader;
+        return $this;
+    }
+    
+    /**
+     * @return ConfigurationLoaderInterface
+     */
+    public function getLoader() {
+        return $this->loader;
     }
     
 }
