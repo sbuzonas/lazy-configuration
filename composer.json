@@ -1,0 +1,13 @@
+{
+    "name": "fancyguy/lazy-configuration",
+    "description": "Lazy loading suite for configuration files.",
+    "authors": [
+        {
+            "name": "Steve Buzonas",
+            "email": "steve@fancyguy.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": { "FancyGuy\\Component\\LazyConfiguration\\": "src/" }
+    },
+}
