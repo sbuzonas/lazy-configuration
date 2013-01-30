@@ -40,4 +40,6 @@ interface ConfigurationLoaderInterface {
 
     public function getConfigurationValue($key);
     
+    public function getConfigurationKeys($namespace);
+    
 }

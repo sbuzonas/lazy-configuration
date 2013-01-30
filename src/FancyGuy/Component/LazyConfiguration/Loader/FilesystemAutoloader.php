@@ -69,4 +69,9 @@ class FilesystemAutoloader implements ConfigurationLoaderInterface {
         return $this->repository->getCollection($path)->getValueForKey($parameter);
     }
     
+    public function getConfigurationKeys($namespace) {
+        $path = implode(DIRECTORY_SEPARATOR, explode(self::NAMESPACE_SEPARATOR, $namespace));
+        return $this->repository->getCollection($path)->getKeys();
+    }
+    
 }

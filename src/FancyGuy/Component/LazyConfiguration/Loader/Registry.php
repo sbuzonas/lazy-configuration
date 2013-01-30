@@ -60,6 +60,10 @@ class Registry {
         return static::$self;
     }
     
+    public static function getConfigurationValue($key) {
+        return self::getInstance()->getLoader()->getConfigurationValue($key);
+    }
+    
     /**
      * @param ConfigurationLoaderInterface $loader
      */
